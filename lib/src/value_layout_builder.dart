@@ -2,21 +2,19 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 /// The signature of the [ValueLayoutBuilder] builder function.
-typedef ValueLayoutWidgetBuilder<T> = Widget Function(
-  BuildContext context,
-  BoxValueConstraints<T> constraints,
-);
+typedef ValueLayoutWidgetBuilder<T> =
+    Widget Function(BuildContext context, BoxValueConstraints<T> constraints);
 
 class BoxValueConstraints<T> extends BoxConstraints {
   BoxValueConstraints({
     required this.value,
     required BoxConstraints constraints,
   }) : super(
-          minWidth: constraints.minWidth,
-          maxWidth: constraints.maxWidth,
-          minHeight: constraints.minHeight,
-          maxHeight: constraints.maxHeight,
-        );
+         minWidth: constraints.minWidth,
+         maxWidth: constraints.maxWidth,
+         minHeight: constraints.minHeight,
+         maxHeight: constraints.maxHeight,
+       );
 
   final T value;
 
@@ -155,9 +153,10 @@ class _RenderValueLayoutBuilder<T> extends RenderBox
     assert(() {
       if (!RenderObject.debugCheckingIntrinsics) {
         throw FlutterError(
-            'ValueLayoutBuilder does not support returning intrinsic dimensions.\n'
-            'Calculating the intrinsic dimensions would require running the layout '
-            'callback speculatively, which might mutate the live render object tree.');
+          'ValueLayoutBuilder does not support returning intrinsic dimensions.\n'
+          'Calculating the intrinsic dimensions would require running the layout '
+          'callback speculatively, which might mutate the live render object tree.',
+        );
       }
       return true;
     }());

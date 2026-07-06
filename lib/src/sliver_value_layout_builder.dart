@@ -2,29 +2,30 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 /// The signature of the [SliverValueLayoutBuilder] builder function.
-typedef SliverValueLayoutWidgetBuilder<T> = Widget Function(
-  BuildContext context,
-  SliverValueConstraints<T> constraints,
-);
+typedef SliverValueLayoutWidgetBuilder<T> =
+    Widget Function(
+      BuildContext context,
+      SliverValueConstraints<T> constraints,
+    );
 
 class SliverValueConstraints<T> extends SliverConstraints {
   SliverValueConstraints({
     required this.value,
     required SliverConstraints constraints,
   }) : super(
-          axisDirection: constraints.axisDirection,
-          growthDirection: constraints.growthDirection,
-          userScrollDirection: constraints.userScrollDirection,
-          scrollOffset: constraints.scrollOffset,
-          precedingScrollExtent: constraints.precedingScrollExtent,
-          overlap: constraints.overlap,
-          remainingPaintExtent: constraints.remainingPaintExtent,
-          crossAxisExtent: constraints.crossAxisExtent,
-          crossAxisDirection: constraints.crossAxisDirection,
-          viewportMainAxisExtent: constraints.viewportMainAxisExtent,
-          remainingCacheExtent: constraints.remainingCacheExtent,
-          cacheOrigin: constraints.cacheOrigin,
-        );
+         axisDirection: constraints.axisDirection,
+         growthDirection: constraints.growthDirection,
+         userScrollDirection: constraints.userScrollDirection,
+         scrollOffset: constraints.scrollOffset,
+         precedingScrollExtent: constraints.precedingScrollExtent,
+         overlap: constraints.overlap,
+         remainingPaintExtent: constraints.remainingPaintExtent,
+         crossAxisExtent: constraints.crossAxisExtent,
+         crossAxisDirection: constraints.crossAxisDirection,
+         viewportMainAxisExtent: constraints.viewportMainAxisExtent,
+         remainingCacheExtent: constraints.remainingCacheExtent,
+         cacheOrigin: constraints.cacheOrigin,
+       );
 
   final T value;
 
@@ -100,8 +101,10 @@ class _RenderSliverValueLayoutBuilder<T> extends RenderSliver
     with
         RenderObjectWithChildMixin<RenderSliver>,
         RenderObjectWithLayoutCallbackMixin,
-        RenderConstrainedLayoutBuilder<SliverValueConstraints<T>,
-            RenderSliver> {
+        RenderConstrainedLayoutBuilder<
+          SliverValueConstraints<T>,
+          RenderSliver
+        > {
   @override
   double childMainAxisPosition(RenderObject child) {
     assert(child == this.child);
